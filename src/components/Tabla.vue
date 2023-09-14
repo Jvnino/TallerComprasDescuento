@@ -37,4 +37,10 @@ function borrar(i: number){
 </template>
 
 <style>
+
+th{
+    background-color: #661239;
+    color: #ffffff; 
+    border-radius: 5px;
+}
 </style>

@@ -77,39 +77,122 @@ function eliminar(index: number){
 </script>
 
 <template>
+  <div>
+    <!-- Seccion que contiene formulario -->
+    <section>
+      <form v-on:submit="agregar">
+        <!-- Input articulo -->
+        <label for="articulo">Articulo</label>
+        <input id="articulo" type="text" v-model="articulo">
 
-  <!-- Seccion que contiene formulario -->
-  <section>
-    <form v-on:submit="agregar">
-      <!-- Input articulo -->
-      <label for="articulo">Articulo</label>
-      <input id="articulo" type="text" v-model="articulo">
+        <!-- Input cantidad -->
+        <label for="cantidad">Cantidad</label>
+        <input id="cantidad" type="text" v-model="cantidad">
 
-      <!-- Input cantidad -->
-      <label for="cantidad">Cantidad</label>
-      <input id="cantidad" type="text" v-model="cantidad">
+        <!-- Input Valor unitario -->
+        <label for="vUnitario">Valor unitario</label>
+        <input id="vUnitario" type="text" v-model="vUnitario">
 
-      <!-- Input Valor unitario -->
-      <label for="vUnitario">Valor unitario</label>
-      <input id="vUnitario" type="text" v-model="vUnitario">
-
-       <!-- Boton -->
-      <button type="submit">Agregar</button>
-    </form>
-  </section>
+        <!-- Boton -->
+        <button type="submit">Agregar</button>
+      </form>
+    </section>
 
 
-  <!-- Seccion que contiene la tabla -->
-  <section>
-    <Tabla :productos="productos" v-on:eliminar="eliminar"/>
+    <!-- Seccion que contiene la tabla -->
+    <section>
+      <Tabla :productos="productos" v-on:eliminar="eliminar"/>
 
-     <!-- Seccion que contiene los valores finales -->
-    <p>Valor inicial: {{ total }}</p>
-    <p>Descuento: {{ descuento }}%</p>
-    <p>Valor total: {{ totalFinal }}</p>
-  </section>
+      <!-- Seccion que contiene los valores finales -->
+     <section>
+        <p>Valor inicial: {{ total }}</p>
+        <p> Descuento: {{ descuento }}%</p>
+        <p class="text-xl">Valor total: {{ totalFinal }}</p>
+      </section>
+    </section>
+  </div>
 </template>
 
 <style scoped>
+div{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr 2fr;
+}
+/* Estilo para el formulario */
+form {
+  max-width: 400px;
+  margin: 20px;
+  padding: 20px;
+  background-color: #ffdfef;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  justify-content: center;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button[type="submit"] {
+  background-color: #bd497f;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #661239;
+}
+
+/* Estilo para la tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  justify-content: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+table, th, td {
+  background-color: #ffdfef;
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+}
+
+/* Estilo para los valores finales */
+.text-xl {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Estilo para la sección que contiene los valores finales */
+section {
+  margin-top: 20px;
+  margin-right: 20px;
+  text-align: center;
+}
+
+p{
+  text-align: end;
+  margin-right: 50px;
+}
 
 </style>
